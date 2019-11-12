@@ -1,0 +1,64 @@
+<html>
+<body>
+<canvas id="canvas" width="800" height="600"></canvas>
+<script src="./robot-arm.js"></script>
+<script>
+    // Robotarm bibliotheek inladen
+    var canvas = document.getElementById("canvas");
+    var robotArm = new RobotArm(canvas);
+    robotArm.loadLevel("exam 1");
+    robotArm.speed = 500;
+    for (var a = 0; a < 4; a++) {
+        robotArm.moveRight();
+    }
+    for (var c = 0; c < 2; c++) {
+        robotArm.grab();
+        for (var b = 0; b < 3; b++) {
+            robotArm.moveLeft();
+        }
+        robotArm.drop();
+        for (var d = 0; d < 3; d++) {
+            robotArm.moveRight();
+        }
+        //
+    }
+    robotArm.grab();
+    for (var e = 0; e < 4; e++) {
+        robotArm.moveLeft();
+    }
+    robotArm.drop();
+    for (var f = 0; f < 2; f++) {
+        robotArm.moveRight();
+        robotArm.grab();
+        robotArm.moveLeft();
+        robotArm.drop();
+    }
+    for (var g = 0; g < 5; g++) {
+        robotArm.moveRight();
+    }
+    //
+    for (var h = 0; h < 2; h++) {
+        robotArm.grab();
+        for (var i = 0; i < 3; i++) {
+            robotArm.moveRight();
+        }
+        robotArm.drop();
+        for (var j = 0; j < 3; j++) {
+            robotArm.moveLeft();
+        }
+    }
+    robotArm.grab();
+    for (var k = 0; k < 4; k++) {
+        robotArm.moveRight();
+    }
+    robotArm.drop();
+    for (var l = 0; l < 2; l++) {
+        robotArm.moveLeft();
+        robotArm.grab();
+        robotArm.moveRight();
+        robotArm.drop();
+    }
+    robotArm.run();
+</script>
+</body>
+</html>

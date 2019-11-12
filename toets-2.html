@@ -1,0 +1,66 @@
+<html>
+<body>
+<canvas id="canvas" width="800" height="600"></canvas>
+<script src="./robot-arm.js"></script>
+<script>
+    // Robotarm bibliotheek inladen
+    var canvas = document.getElementById("canvas");
+    var robotArm = new RobotArm(canvas);
+    robotArm.loadLevel("exam 2");
+    robotArm.speed = 600;
+    // Deze code pas je NIET aan
+    moveArm("right" , 3);
+    moveBlock("left", 3);
+    moveBlock("right", 6);
+    moveBlock("right", 2);
+    moveBlock("right", 6);
+    moveBlock("left", 1);
+    moveBlock("left", 3);
+
+    /*
+        Je mist twee functies, de moveArm en moveBlock. Dit is de reden dat de robotArm niet opstart en je
+        een wit scherm krijgt. Deze functies bevatten beide twee parameters. Jij gaat die functies bouwen.
+        Handig om te weten is dat de functie moveArm ook wordt aangeroepen in de moveBlock functie. De moveBlock
+        functie pakt een blokje, verplaatst hem naar een bepaalde plaats en verplaatst de arm weer terug naar
+        boven de stapel. Je mag maximaal 25 regels code toevoegen.
+
+    */
+    function moveArm(dir, number) {
+        if (dir == "right") {
+            for (i = 1; i <= number; i++) {
+                robotArm.moveRight();
+            }
+        } else {
+            for (j = 1; j <= number; i++) {
+                robotArm.moveLeft();
+            }
+        }
+    }
+
+    function moveBlock(dir, number) {
+        if (dir == "right") {
+            for (k = 1; k <= number; k++) {
+                robotArm.grab();
+                robotArm.moveRight();
+                robotArm.drop();
+            }
+            for (y = 1; y <= number; y++){
+                robotArm.moveLeft();
+            }
+        } else {
+            for (l = 1; l <= number; l++) {
+                robotArm.grab();
+                for (m = 1; m <= number; m++) {
+                    robotArm.moveLeft();
+                }
+                robotArm.drop();
+            }
+            for (y = 1; y <= number; y++){
+                robotArm.moveRight();
+            }
+        }
+    }
+    robotArm.run();
+</script>
+</body>
+</html>
